@@ -1,0 +1,41 @@
+Reproducible Pitch For Shiny Web App
+========================================================
+author: R. Camara
+date: 21/01/2018
+autosize: true
+
+Introduction
+========================================================
+
+This is the pitch for the Shiny App developed for the Data Products in R course project. The App looks at the Oxides of Nitrogen (NOX) pollution levels in London in 2017.
+
+- It allows the user to interactively view the amount of NOX pollution per hour for each day of the month selected. 
+
+- The bar chart displays the varying amount of NOX for each hour when the sliders are moved for each day of the month selected. 
+
+
+The Data
+========================================================
+The data was obtained from https://goo.gl/Zc1sqE
+
+- Below is a summary
+
+```{r, echo=FALSE}
+airdata <- readRDS(file = url("https://raw.githubusercontent.com/rc202/DataProductsR/master/nox.rds"))
+summary(airdata) 
+```
+
+Slide With Plot
+========================================================
+- This is the hourly pollution of NOX for the fifth day of August, 2017
+
+```{r, echo=FALSE}
+barplot(airdata[which(airdata$month==8 & airdata$day==5),]$value, 
+            main="Hourly Data for 5/8/2017",
+            ylab="NOX/PPB",
+            xlab="Hour", col="purple")
+```
+
+Conclusion
+========================================================
+The first part of the assignment showing the ui and server files for the Shiny App can be found here https://github.com/rc202/DataProductsR
